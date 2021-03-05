@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "53218494979",
+    "firebase_url": "https://miadmimedico.firebaseio.com",
+    "project_id": "miadmimedico",
+    "storage_bucket": "miadmimedico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53218494979:android:0ce745fd6dab88ce5f9c36",
+        "android_client_info": {
+          "package_name": "help.com.miadmimedico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53218494979-9lckounfeev77g82m42n9uurljfdu02m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "help.com.miadmimedico",
+            "certificate_hash": "2e5c05cea2bcad74b85dff513c8e78b8651fbd8a"
+          }
+        },
+        {
+          "client_id": "53218494979-lml6gcgrl40hm4v8m45b36f9a16bv2vc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXxTXDQcVUY3iTe4qJBRF9tDHL75VJv6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53218494979-lml6gcgrl40hm4v8m45b36f9a16bv2vc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

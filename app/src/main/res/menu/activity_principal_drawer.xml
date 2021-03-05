@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/perfilMenu"
+            android:title="Perfil"
+            android:icon="@drawable/ic_person_black_24dp"/>
+        <item
+            android:id="@+id/contactoMenu"
+            android:title="Contacto"
+            android:icon="@drawable/icono_contacto"/>
+        <item
+            android:id="@+id/recetaMenu"
+            android:title="Receta"
+            android:icon="@drawable/icono_receta"/>
+        <item
+            android:id="@+id/medicamentoMenu"
+            android:title="Medicamento"
+            android:icon="@drawable/icono_medicamento"/>
+        <item
+            android:id="@+id/seguimientoMenu"
+            android:title="Seguimiento"
+            android:icon="@drawable/icono_seguimiento"/>
+        <item
+            android:id="@+id/cerrarSesionMenu"
+            android:title="Cerrar sesión"
+            android:icon="@drawable/icono_cerrar_sesion"/>
+    </group>
+
+</menu>

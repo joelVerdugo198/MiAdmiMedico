@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetearContrasena"
+    android:background="#ffffff">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include
+        layout="@layout/toolbar"
+        />
+
+    <ImageView
+        android:id="@+id/iconoIniciarSesion"
+        android:layout_width="117dp"
+        android:layout_height="108dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconomedicamento" />
+
+        <EditText
+            android:id="@+id/escribirCorreoVerificar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="50dp"
+            android:ems="10"
+            android:hint="Correo"
+            android:inputType="textPersonName"
+            android:textSize="20dp"
+            android:background="@drawable/marco_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mensajeAviso" />
+
+        <Button
+            android:id="@+id/btnVerificar"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="#2E86C1"
+            android:text="Enviar"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="10dp"
+            android:drawableRight="@drawable/marco_flecha_derecha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/escribirCorreoVerificar" />
+
+        <TextView
+            android:id="@+id/mensajeAviso"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Se te enviará un link a tu correo con el que te registraste para resetear la contraseña."
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoIniciarSesion" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

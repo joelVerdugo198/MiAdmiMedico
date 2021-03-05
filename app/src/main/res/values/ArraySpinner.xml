@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="dia">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="cantidad">
+
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+
+        </string-array>
+
+    <string-array name="hora">
+        <item> </item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+    <item>4</item>
+    <item>5</item>
+    <item>6</item>
+    <item>7</item>
+    <item>8</item>
+    <item>9</item>
+    <item>10</item>
+    <item>11</item>
+    <item>12</item>
+    <item>13</item>
+    <item>14</item>
+    <item>15</item>
+    <item>16</item>
+    <item>17</item>
+    <item>18</item>
+    <item>19</item>
+    <item>20</item>
+    <item>21</item>
+    <item>22</item>
+    <item>23</item>
+    <item>24</item>
+    </string-array>
+
+<string-array name="tipo_receta">
+    <item></item>
+    <item>Cardiólogo</item>
+    <item>Urólogo</item>
+    <item>Dermatólogo</item>
+    <item>Oncólogo</item>
+    <item>Neurólogo</item>
+    <item>Psiquiatría</item>
+    <item>Médico familiar</item>
+</string-array>
+
+    <string-array name="tipo_porcion">
+        <item></item>
+        <item>mg</item>
+        <item>ml</item>
+        <item>lt</item>
+    </string-array>
+
+    <string-array name="tipo_via">
+        <item></item>
+        <item>oral</item>
+        <item>sublingual</item>
+        <item>tópica</item>
+        <item>transdérmica</item>
+        <item>oftálmica</item>
+        <item>ótica</item>
+        <item>intranasal</item>
+        <item>inhalatoria</item>
+        <item>rectal</item>
+        <item>vaginal</item>
+        <item>intravenosa</item>
+        <item>intramuscular</item>
+        <item>subcutánea</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="help.com.miadmimedico">
+
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <application
+        android:name=".FirebasePersistencia"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ResetearContrasena"></activity>
+        <activity android:name=".EditarMedicamento" />
+        <activity android:name=".AgregarMedicamento" />
+        <activity android:name=".EditarMedicamentoReceta" />
+        <activity android:name=".Seguimiento" />
+        <activity android:name=".Medicamento" />
+        <activity
+            android:name=".AgregarMedicamentoReceta"
+            android:label="@string/title_activity_agregar_receta"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
+        <activity android:name=".Receta" />
+        <activity android:name=".AgregarContacto" />
+        <activity
+            android:name=".Principal"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".Usuario" />
+        <activity android:name=".EditarContacto" />
+        <activity android:name=".Contacto" />
+        <activity android:name=".Registro" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".Notificacion"
+            > </receiver>
+
+    </application>
+
+</manifest>

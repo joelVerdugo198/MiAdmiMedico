@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarMedicamentoReceta">
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:background="#ffffff"
+            android:paddingBottom="15dp">
+
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <TextView
+                android:id="@+id/tipoRecetaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Tipo receta"
+                android:textColor="#2E86C1"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+            <Spinner
+                android:id="@+id/opcionEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tipoRecetaEditarReceta" />
+
+            <TextView
+                android:id="@+id/cedulaEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Cédula médica"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opcionEditarReceta" />
+
+            <EditText
+                android:id="@+id/escribirCedulaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="20dp"
+                android:background="@drawable/marco_edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cedulaEditarReceta" />
+
+            <TextView
+                android:id="@+id/medicamentoEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Medicamento"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/escribirCedulaEditarReceta" />
+
+            <EditText
+                android:id="@+id/escribirMedicamentoEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="20dp"
+                android:background="@drawable/marco_edit_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/medicamentoEditarReceta" />
+
+            <TextView
+                android:id="@+id/porcionEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Porción"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/escribirMedicamentoEditarReceta" />
+
+            <EditText
+                android:id="@+id/escribirPorcionEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:textSize="20dp"
+                android:background="@drawable/marco_edit_text"
+                app:layout_constraintEnd_toStartOf="@+id/tipoPorcionEditarReceta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/porcionEditarReceta" />
+
+            <TextView
+                android:id="@+id/textoTipoPorcionEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Tipo Porción"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="@+id/tipoPorcionEditarReceta"
+                app:layout_constraintTop_toBottomOf="@+id/escribirMedicamentoEditarReceta" />
+
+            <Spinner
+                android:id="@+id/tipoPorcionEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/escribirPorcionEditarReceta"
+                app:layout_constraintTop_toBottomOf="@+id/textoTipoPorcionEditarReceta" />
+
+            <TextView
+                android:id="@+id/cantidadEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Cantidad"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/escribirPorcionEditarReceta" />
+
+            <Spinner
+                android:id="@+id/opcionCantidadEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cantidadEditarReceta" />
+
+            <TextView
+                android:id="@+id/horaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Intervalo de hora"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opcionCantidadEditarReceta" />
+
+            <Spinner
+                android:id="@+id/opcionHoraEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horaEditarReceta" />
+
+
+            <TextView
+                android:id="@+id/diaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Días"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opcionHoraEditarReceta" />
+
+            <Spinner
+                android:id="@+id/opcionDiaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/diaEditarReceta" />
+
+            <TextView
+                android:id="@+id/contactoEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Contacto de confianza"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opcionViaEditarReceta" />
+
+            <TextView
+                android:id="@+id/viaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:text="Vía de administración"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/opcionDiaEditarReceta" />
+
+            <Spinner
+                android:id="@+id/opcionViaEditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viaEditarReceta" />
+
+            <TextView
+                android:id="@+id/numeroUnoContactoEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="1- "
+                android:textColor="#2E86C1"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contacto1EditarReceta"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/numeroDosContactoEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="2- "
+                android:textColor="#2E86C1"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toTopOf="@+id/contacto3EditarReceta"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/numeroTresContactoEditarReceta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="3- "
+                android:textColor="#2E86C1"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="@+id/contacto3EditarReceta"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+            <Spinner
+                android:id="@+id/contacto1EditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/numeroUnoContactoEditarReceta"
+                app:layout_constraintTop_toBottomOf="@+id/contactoEditarReceta" />
+
+            <Spinner
+                android:id="@+id/contacto2EditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/numeroDosContactoEditarReceta"
+                app:layout_constraintTop_toBottomOf="@+id/contacto1EditarReceta" />
+
+            <Spinner
+                android:id="@+id/contacto3EditarReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/personalizar_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/numeroTresContactoEditarReceta"
+                app:layout_constraintTop_toBottomOf="@+id/contacto2EditarReceta" />
+
+
+
+            <Button
+                android:id="@+id/botonEditarMedicamentoReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary"
+                android:text="Guardar"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/btnEliminarMedicamentoReceta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contacto3EditarReceta" />
+
+            <Button
+                android:id="@+id/btnEliminarMedicamentoReceta"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/boton_borde_azul"
+                android:text="Eliminar"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/botonEditarMedicamentoReceta"
+                app:layout_constraintTop_toTopOf="@+id/botonEditarMedicamentoReceta" />
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

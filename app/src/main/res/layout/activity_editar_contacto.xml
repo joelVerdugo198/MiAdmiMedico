@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditarContacto">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <ImageView
+            android:id="@+id/iconoEditarContacto"
+            android:layout_width="117dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:srcCompat="@drawable/iconousuario" />
+
+        <TextView
+            android:id="@+id/nombreEditarContacto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="50dp"
+            android:text="Nombre"
+            android:textColor="#2E86C1"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconoEditarContacto" />
+
+    <EditText
+        android:id="@+id/escribirNombreEditarContacto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/marco_edit_text"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEditarContacto" />
+
+        <TextView
+            android:id="@+id/apellidoEditarContacto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="50dp"
+            android:text="Apellido"
+            android:textColor="#2E86C1"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/escribirNombreEditarContacto" />
+
+        <EditText
+            android:id="@+id/escribirApellidoEditarContacto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/marco_edit_text"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apellidoEditarContacto" />
+
+    <TextView
+        android:id="@+id/telefonoEditarContacto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="50dp"
+        android:text="Teléfono"
+        android:textColor="#2E86C1"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/escribirApellidoEditarContacto" />
+
+    <EditText
+        android:id="@+id/escribirtelefonoEditarContacto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/marco_edit_text"
+        android:ems="10"
+        android:inputType="number"
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefonoEditarContacto" />
+
+        <Button
+            android:id="@+id/botonGuardarEditarContacto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#2E86C1"
+            android:text="Guardar"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/escribirtelefonoEditarContacto" />
+
+        <Button
+            android:id="@+id/botonEliminarEditarContacto"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/marco_edit_text"
+            android:text="Eliminar"
+            android:textAllCaps="false"
+            android:textColor="#2E86C1"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/botonGuardarEditarContacto" />
+
+    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>
