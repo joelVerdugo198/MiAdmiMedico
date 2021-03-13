@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,51 +36,55 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar;
-        Button botonIniciarSesion;
-        final EditText campoCorreo, campoContraseña ;
-        TextView btnRegistrarIniciarSesion, btnResetearContraseña;
+        ImageView iconoIniciarSesion;
+        Button botonIniciarSesion, btnRegistrar;
+        final EditText campoCorreo, campoContrasena ;
+        TextView btnResetearContrasena;
 
         mAuth = FirebaseAuth.getInstance();
         progreso = new ProgressDialog(this);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        iconoIniciarSesion = (ImageView) findViewById(R.id.iconoIniciarSesion);
         campoCorreo = (EditText) findViewById(R.id.usuarioIniciarSesion);
-        campoContraseña = (EditText) findViewById(R.id.contraseñaIniciarSesion);
+        campoContrasena = (EditText) findViewById(R.id.contraseñaIniciarSesion);
         botonIniciarSesion = (Button) findViewById(R.id.botonIniciarSesion);
-        btnRegistrarIniciarSesion = (TextView) findViewById(R.id.registrarIniciarSesion);
-        btnResetearContraseña = (TextView) findViewById(R.id.contraseñaOlvidada);
+        btnRegistrar = (Button) findViewById(R.id.registrarIniciarSesion);
+        btnResetearContrasena = (TextView) findViewById(R.id.contraseñaOlvidada);
 
         setSupportActionBar(toolbar);
+
+
+
+         btnRegistrar.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent = new Intent(MainActivity.this, Registro.class);
+                 startActivity(intent);
+                 finish();
+             }
+         });
+
+        btnResetearContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ResetearContrasena.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         botonIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 usuario.setCorreo(campoCorreo.getText().toString());
-                usuario.setContraseña(campoContraseña.getText().toString());
+                usuario.setContraseña(campoContrasena.getText().toString());
                 if (!usuario.getCorreo().isEmpty() && !usuario.getContraseña().isEmpty()){
                     progreso.setMessage("Iniciando sesión ...");
                     progreso.setCanceledOnTouchOutside(false);
                     progreso.show();
                     iniciarSesion();
                 }
-            }
-        });
-
-         btnRegistrarIniciarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Registro.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        btnResetearContraseña.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ResetearContrasena.class);
-                startActivity(intent);
-                finish();
             }
         });
 
@@ -96,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     progreso.dismiss();
-                    Toast.makeText(MainActivity.this, "Verifique su conexión a internet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Verifique su correo y/o contraseña", Toast.LENGTH_SHORT).show();
                 }
             }
         });

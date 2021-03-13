@@ -190,11 +190,6 @@ public class Principal extends AppCompatActivity
         baseDatos.child("seguimiento").child(usuario.getIdUsuario()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                datos_alarma_futura.clear();
-                hora_alarma.clear();
-                hora_alarma_futura.clear();
-                datos_alarma.clear();
-                id_seguimiento.clear();
                 if (dataSnapshot.exists()){
                     for (DataSnapshot objSnapshot : dataSnapshot.getChildren()){
                         seguimiento.setNombreMedicamento(objSnapshot.child("medicamento").getValue().toString());
@@ -228,6 +223,11 @@ public class Principal extends AppCompatActivity
                     ordenarAlarmasFuturas( hora_alarma_futura, datos_alarma_futura);
                     listaAlarma.setAdapter(new AdaptadorPrincipal(Principal.this, datos_alarma, hora_alarma, id_seguimiento));
                     listaAlarmaFutura.setAdapter(new AdaptadorPrincipalFuturo(Principal.this, datos_alarma_futura, hora_alarma_futura));
+                    datos_alarma_futura.clear();
+                    hora_alarma.clear();
+                    hora_alarma_futura.clear();
+                    datos_alarma.clear();
+                    id_seguimiento.clear();
                 }
 
             }
@@ -323,7 +323,7 @@ public class Principal extends AppCompatActivity
                         datos_seguimiento.put("alarmaConfirmada", seguimiento.getAlarmaConfirmda());
                         datos_seguimiento.put("horaAlarma", seguimiento.getHoraAlarma());
 
-                        //SE ELIMINA EL MEDICAMENTO Y SU SEFUIMIENTO CUANDO LLEGUA AL TOTAL DE APLICACIONES DEL MEDICAMENTO
+                        //SE ELIMINA EL MEDICAMENTO Y SU SEGUIMIENTO CUANDO LLEGA AL TOTAL DE APLICACIONES DEL MEDICAMENTO
                         if (objSnapshot.child("alarmaConfirmada").getValue().toString().equals("confirmada") &&
                                 Integer.parseInt(objSnapshot.child("cantidadTomada").getValue().toString()) ==
                                         Integer.parseInt(objSnapshot.child("cantidadTotal").getValue().toString())) {
@@ -334,7 +334,7 @@ public class Principal extends AppCompatActivity
                             }
                             baseDatos.child("seguimiento").child(usuario.getIdUsuario()).child(objSnapshot.child("idSeguimiento").getValue().toString()).removeValue();
                         }
-                        //SE CANCELA LA ALARMA DE UN MEDICAMENTO DE RECETA YA QUE LLEGUA ENVIAR 3 SMS PARA QUE NO ESTE SONANDO CADA 30 SEGUNDOS
+                        //SE CANCELA LA ALARMA DE UN MEDICAMENTO DE RECETA YA QUE LLEGA ENVIAR 3 SMS PARA QUE NO ESTE SONANDO CADA 30 SEGUNDOS
                         else if (!objSnapshot.child("tipo").getValue().toString().equals("Medicamento")){
                             if (objSnapshot.child("envioSmsContacto").getValue().toString()!=null) {
                                 if (objSnapshot.child("alarmaConfirmada").getValue().toString().equals("no confirmado")
