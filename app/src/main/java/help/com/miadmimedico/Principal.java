@@ -18,9 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +45,8 @@ public class Principal extends AppCompatActivity
     ListView listaAlarma, listaAlarmaFutura;
     TextView actividadAlarma, alarmaConfirmarVacio, alarmaFuturaVacio;
 
+    ImageView fotoPerfilMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +66,14 @@ public class Principal extends AppCompatActivity
 
         usuario.setIdUsuario(mAuth.getCurrentUser().getUid());
 
+        View navHeader = navigationView.getHeaderView(0);
+
         listaAlarma = (ListView) findViewById(R.id.listaAlarma);
         alarmaConfirmarVacio = (TextView) findViewById(R.id.textoAlarmaVacio);
         actividadAlarma = (TextView) findViewById(R.id.actividadAlarma);
         alarmaFuturaVacio = (TextView) findViewById(R.id.textoAlarmaFuturaVacio);
         listaAlarmaFutura = (ListView) findViewById(R.id.listaFuturaAlarma);
+        fotoPerfilMenu = navHeader.findViewById(R.id.fotoPerfilMenu);
 
         mostrarAvisoNoAlarma();
 
@@ -76,6 +83,20 @@ public class Principal extends AppCompatActivity
 
         estadoSeguimiento();
 
+        baseDatos.child("usuario").child(usuario.getIdUsuario()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    usuario.setFotoPerfil(dataSnapshot.child("fotoPerfil").getValue().toString());
+                    Glide.with(Principal.this).load(usuario.getFotoPerfil()).placeholder(R.drawable.iconousuario).into(fotoPerfilMenu);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
