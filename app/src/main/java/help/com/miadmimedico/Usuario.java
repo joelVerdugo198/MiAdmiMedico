@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -86,7 +88,6 @@ public class Usuario extends AppCompatActivity {
         getSupportActionBar().setTitle("Editar perfil");
 
         mostrarDatosUsuario();
-        Glide.with(Usuario.this).load(Usuario.getFotoPerfil()).placeholder(R.drawable.iconousuario).into(campoFotoPerfil);
 
         cameraImagePicker.setCacheLocation(CacheLocation.EXTERNAL_STORAGE_APP_DIR);
 
@@ -160,27 +161,45 @@ public class Usuario extends AppCompatActivity {
                         @Override
                         public void devolerUrlString(String url) {
                             Usuario.setFotoPerfil(url);
+                            Usuario.setNombre(campoNombre.getText().toString());
+                            Usuario.setApellido(campoApellido.getText().toString());
+                            Usuario.setTelefono(campoTelefono.getText().toString());
+
+                            //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
+                            if (!Usuario.getNombre().isEmpty() || !Usuario.getApellido().isEmpty() ||
+                                    !Usuario.getTelefono().isEmpty()) {
+
+                                if (Usuario.getTelefono().length() == 10) {
+                                    actualizarUsuario();
+                                } else if (Usuario.getTelefono().length() < 10 || Usuario.getTelefono().length() > 10) {
+                                    Toast.makeText(Usuario.this, "el número teléfonico debe de tener 10 dígitos", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } else {
+                                Toast.makeText(Usuario.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     });
                 }
+                else{
+                    Usuario.setNombre(campoNombre.getText().toString());
+                    Usuario.setApellido(campoApellido.getText().toString());
+                    Usuario.setTelefono(campoTelefono.getText().toString());
 
-                Usuario.setNombre(campoNombre.getText().toString());
-                Usuario.setApellido(campoApellido.getText().toString());
-                Usuario.setTelefono(campoTelefono.getText().toString());
+                    //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
+                    if (!Usuario.getNombre().isEmpty() || !Usuario.getApellido().isEmpty() ||
+                            !Usuario.getTelefono().isEmpty()) {
 
-                //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
-                if (!Usuario.getNombre().isEmpty() || !Usuario.getApellido().isEmpty() ||
-                        !Usuario.getTelefono().isEmpty()) {
+                        if (Usuario.getTelefono().length() == 10) {
+                            actualizarUsuario();
+                        } else if (Usuario.getTelefono().length() < 10 || Usuario.getTelefono().length() > 10) {
+                            Toast.makeText(Usuario.this, "el número teléfonico debe de tener 10 dígitos", Toast.LENGTH_SHORT).show();
+                        }
 
-                    if (Usuario.getTelefono().length() == 10) {
-                        actualizarUsuario();
+                    } else {
+                        Toast.makeText(Usuario.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
                     }
-                    else if (Usuario.getTelefono().length() < 10 || Usuario.getTelefono().length() > 10) {
-                        Toast.makeText(Usuario.this, "el número teléfonico debe de tener 10 dígitos", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(Usuario.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -251,38 +270,6 @@ public class Usuario extends AppCompatActivity {
         });
     }
 
-    //RECIBIR EL RESULTADO DESDE LA CAMARA O GALERÍA
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Picker.PICK_IMAGE_DEVICE && resultCode == RESULT_OK){
-            imagePicker.submit(data);
-        }else if(requestCode == Picker.PICK_IMAGE_CAMERA && resultCode == RESULT_OK){
-            cameraImagePicker.reinitialize(pickerPath);
-            cameraImagePicker.submit(data);
-        }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        // TIENES QUE GUARDAR LA RUTA EN CASO DE QUE SE ELIMINE TU ACTIVIDAD.
-        // EN TAL ESCENARIO, DEBERÁ REINICIAR EL CAMERAIMAGENPICKER
-        outState.putString("picker_path", pickerPath);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        // DESPUÉS DE LA RECREACIÓN DE LA ACTIVIDAD, DEBE REINICIALIZAR ESTOS
-        // DOS VALORES PARA PODER REINICIALIZAR CAMERAIMAGENPICKER
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey("picker_path")) {
-                pickerPath = savedInstanceState.getString("picker_path");
-            }
-        }
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
     public void mostrarDatosUsuario(){
         baseDatos.child("usuario").child(Usuario.getIdUsuario()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -296,6 +283,8 @@ public class Usuario extends AppCompatActivity {
                     campoNombre.setText(Usuario.getNombre());
                     campoApellido.setText(Usuario.getApellido());
                     campoTelefono.setText(Usuario.getTelefono());
+
+                    Glide.with(Usuario.this).load(Usuario.getFotoPerfil()).placeholder(R.drawable.iconousuario).into(campoFotoPerfil);
 
                 }
             }
@@ -391,17 +380,16 @@ public class Usuario extends AppCompatActivity {
         baseDatos.child("usuario").child(Usuario.getIdUsuario()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     datos_usuario.put("correo", dataSnapshot.child("correo").getValue().toString());
                     baseDatos.child("usuario").child(Usuario.getIdUsuario()).setValue(datos_usuario).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()) {
                                 Toast.makeText(Usuario.this, "Se actualizó con éxito", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(Usuario.this,Principal.class));
+                                startActivity(new Intent(Usuario.this, Principal.class));
                                 finish();
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(Usuario.this, "Error al actualizar los datos", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -414,7 +402,37 @@ public class Usuario extends AppCompatActivity {
 
             }
         });
+    }
 
+    //RECIBIR EL RESULTADO DESDE LA CAMARA O GALERÍA
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == Picker.PICK_IMAGE_DEVICE && resultCode == RESULT_OK){
+            imagePicker.submit(data);
+        }else if(requestCode == Picker.PICK_IMAGE_CAMERA && resultCode == RESULT_OK){
+            cameraImagePicker.reinitialize(pickerPath);
+            cameraImagePicker.submit(data);
+        }
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // TIENES QUE GUARDAR LA RUTA EN CASO DE QUE SE ELIMINE TU ACTIVIDAD.
+        // EN TAL ESCENARIO, DEBERÁ REINICIAR EL CAMERAIMAGENPICKER
+        outState.putString("picker_path", pickerPath);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        // DESPUÉS DE LA RECREACIÓN DE LA ACTIVIDAD, DEBE REINICIALIZAR ESTOS
+        // DOS VALORES PARA PODER REINICIALIZAR CAMERAIMAGENPICKER
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey("picker_path")) {
+                pickerPath = savedInstanceState.getString("picker_path");
+            }
+        }
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

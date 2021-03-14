@@ -157,32 +157,56 @@ public class Registro extends AppCompatActivity {
                         @Override
                         public void devolerUrlString(String url) {
                             usuario.setFotoPerfil(url);
+                            usuario.setNombre(campoNombre.getText().toString());
+                            usuario.setApellido(campoApellido.getText().toString());
+                            usuario.setTelefono(campoTelefono.getText().toString());
+                            usuario.setCorreo(campoCorreo.getText().toString());
+                            usuario.setContraseña(campoContraseña.getText().toString());
+
+                            //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
+                            if (!usuario.getNombre().isEmpty() && !usuario.getApellido().isEmpty() && !usuario.getTelefono().isEmpty()
+                                    && !usuario.getCorreo().isEmpty() && !usuario.getContraseña().isEmpty()) {
+                                if (usuario.getContraseña().length() >= 6 && usuario.getTelefono().length() == 10) {
+                                    verificarUsuario(usuario.getCorreo());
+                                }
+                                else{
+                                    if (usuario.getTelefono().length() < 10 || usuario.getTelefono().length() > 10) {
+                                        Toast.makeText(Registro.this, "El número teléfonico debe de tener 10 dígitos ", Toast.LENGTH_SHORT).show();
+                                    } else if (usuario.getContraseña().length() < 6) {
+                                        Toast.makeText(Registro.this, "La contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                            else {
+                                Toast.makeText(Registro.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
                 }
+                else{
+                    usuario.setNombre(campoNombre.getText().toString());
+                    usuario.setApellido(campoApellido.getText().toString());
+                    usuario.setTelefono(campoTelefono.getText().toString());
+                    usuario.setCorreo(campoCorreo.getText().toString());
+                    usuario.setContraseña(campoContraseña.getText().toString());
 
-                usuario.setNombre(campoNombre.getText().toString());
-                usuario.setApellido(campoApellido.getText().toString());
-                usuario.setTelefono(campoTelefono.getText().toString());
-                usuario.setCorreo(campoCorreo.getText().toString());
-                usuario.setContraseña(campoContraseña.getText().toString());
-
-                //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
-                if (!usuario.getNombre().isEmpty() && !usuario.getApellido().isEmpty() && !usuario.getTelefono().isEmpty()
-                        && !usuario.getCorreo().isEmpty() && !usuario.getContraseña().isEmpty()) {
-                    if (usuario.getContraseña().length() >= 6 && usuario.getTelefono().length() == 10) {
-                        verificarUsuario(usuario.getCorreo());
-                    }
-                    else{
-                        if (usuario.getTelefono().length() < 10 || usuario.getTelefono().length() > 10) {
-                            Toast.makeText(Registro.this, "El número teléfonico debe de tener 10 dígitos ", Toast.LENGTH_SHORT).show();
-                        } else if (usuario.getContraseña().length() < 6) {
-                            Toast.makeText(Registro.this, "La contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT).show();
+                    //SE COMPRUEBA DE QUE NO ESTEN VACIOS LOS CAMPOS Y CUMPlAN CON ESPECIFICACIONES
+                    if (!usuario.getNombre().isEmpty() && !usuario.getApellido().isEmpty() && !usuario.getTelefono().isEmpty()
+                            && !usuario.getCorreo().isEmpty() && !usuario.getContraseña().isEmpty()) {
+                        if (usuario.getContraseña().length() >= 6 && usuario.getTelefono().length() == 10) {
+                            verificarUsuario(usuario.getCorreo());
+                        }
+                        else{
+                            if (usuario.getTelefono().length() < 10 || usuario.getTelefono().length() > 10) {
+                                Toast.makeText(Registro.this, "El número teléfonico debe de tener 10 dígitos ", Toast.LENGTH_SHORT).show();
+                            } else if (usuario.getContraseña().length() < 6) {
+                                Toast.makeText(Registro.this, "La contraseña debe tener al menos 6 carácteres", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
-                }
-                else {
-                    Toast.makeText(Registro.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(Registro.this, "Llenar campos vacíos", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
